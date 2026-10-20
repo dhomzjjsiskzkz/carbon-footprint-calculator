@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container-fluid py-3 px-3 px-md-5">
+      <h1 class="text-center mb-0">Carbon Footprint Calculator</h1>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid px-3 px-md-5">
+      <a class="navbar-brand fw-bold" href="#home">General</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#travel">Travel</a></li>
+          <li class="nav-item"><a class="nav-link" href="#food">Food</a></li>
+          <li class="nav-item"><a class="nav-link" href="#electronics">Electronic usage</a></li>
+          <li class="nav-item"><a class="nav-link" href="#shopping">Shopping</a></li>
+          <li class="nav-item"><a class="nav-link" href="#result">Result</a></li>
+        </ul>
+        <a class="btn btn-success" href="#home">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home" class="container-fluid px-3 px-md-5 py-4">
+    <section class="intro row align-items-center g-4 mb-4">
+      <div class="col-lg-6">
+        <h2>Climate change is real!!</h2>
+        <p class="lead">Our everyday choices affect the planet. Learn how your travel, food, electricity use, and shopping habits contribute to your carbon footprint.</p>
+        <p>A carbon footprint is the total amount of greenhouse gases produced by our activities. Small changes in our daily lives can help protect the environment.</p>
+      </div>
+      <div class="col-lg-6">
+        <img class="environment-image img-fluid" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85" alt="Green forest representing environmental sustainability">
+      </div>
+    </section>
+
+    <section class="row justify-content-center mb-4">
+      <div class="col-12 col-xl-8">
+        <div class="card calculator-card">
+          <div class="card-header text-center">
+            <span class="float-start">...</span>
+            <strong>Fill the form below</strong>
+          </div>
+          <div class="card-body">
+            <h4 class="text-center mb-2">Check your carbon footprint!</h4>
+            <p class="text-center text-muted">Understand your impact and discover ways to make more environmentally friendly choices.</p>
+            <div class="progress mb-4" role="progressbar" aria-label="Form progress" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" id="progressBar" style="width: 20%"></div>
+            </div>
+            <form id="footprintForm">
+              <div class="form-step" data-step="0">
+                <div class="row align-items-center mb-3">
+                  <label for="name" class="col-sm-4 col-form-label">Name</label>
+                  <div class="col-sm-8"><input class="form-control" id="name" type="text" placeholder="Enter your name" required></div>
+                </div>
+                <div class="row align-items-center mb-3">
+                  <label for="age" class="col-sm-4 col-form-label">Age</label>
+                  <div class="col-sm-8"><input class="form-control" id="age" type="number" min="1" max="120" placeholder="Enter your age" required></div>
+                </div>
+                <div class="row align-items-center mb-3">
+                  <label for="country" class="col-sm-4 col-form-label">Country</label>
+                  <div class="col-sm-8">
+                    <select class="form-select" id="country">
+                      <option selected>Saudi Arabia</option><option>United Arab Emirates</option><option>Egypt</option><option>United Kingdom</option><option>United States</option><option>Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-step d-none" data-step="1" id="travel">
+                <h5 class="mb-3">Travel</h5>
+                <label for="car" class="form-label">How many hours do you travel by car each week?</label>
+                <input class="form-control mb-3" id="car" type="number" min="0" value="3">
+                <label for="flights" class="form-label">How many flights do you take each year?</label>
+                <input class="form-control" id="flights" type="number" min="0" value="0">
+              </div>
+              <div class="form-step d-none" data-step="2" id="food">
+                <h5 class="mb-3">Food</h5>
+                <label for="diet" class="form-label">Which option best describes your diet?</label>
+                <select class="form-select" id="diet"><option value="3">Mostly meat</option><option value="2" selected>Mixed diet</option><option value="1">Mostly vegetarian</option></select>
+              </div>
+              <div class="form-step d-none" data-step="3" id="electronics">
+                <h5 class="mb-3">Electronic usage</h5>
+                <label for="electricity" class="form-label">Daily hours using electronic devices</label>
+                <input class="form-control" id="electricity" type="number" min="0" max="24" value="5">
+              </div>
+              <div class="form-step d-none" data-step="4" id="shopping">
+                <h5 class="mb-3">Shopping</h5>
+                <label for="shoppingHabits" class="form-label">How often do you buy new items?</label>
+                <select class="form-select" id="shoppingHabits"><option value="1">Rarely</option><option value="2" selected>Sometimes</option><option value="3">Often</option></select>
+              </div>
+              <div class="form-step d-none" data-step="5" id="result">
+                <h5 class="mb-3">Your result</h5>
+                <p id="resultText" class="mb-0">Complete the form and select Calculate to see your estimated result.</p>
+              </div>
+              <div class="card-footer d-flex justify-content-center align-items-center gap-3 mt-4">
+                <button type="button" class="btn btn-success" id="prevBtn" disabled>Prev</button>
+                <button type="button" class="btn btn-success" id="nextBtn">Next</button>
+                <a href="#result" class="btn btn-primary d-none" id="calculateBtn">Calculate</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="awareness text-center py-4">
+      <h4>Make a difference, one choice at a time.</h4>
+      <p class="mb-3">Being aware of your carbon footprint is the first step toward a cleaner, healthier planet. Choose sustainable habits whenever you can.</p>
+      <a class="btn btn-primary btn-lg" href="#result" id="awarenessCalculate">Calculate</a>
+    </section>
+  </main>
+
+  <footer class="text-center py-3">
+    <small>Carbon Footprint Calculator · Term 1 Computer Science Project</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
